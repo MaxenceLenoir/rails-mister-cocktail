@@ -1,0 +1,42 @@
+<h1 class="text-center my-2"><%= @cocktail.name %></h1>
+<div class="row">
+  <div class="col-md-6">
+    <div class="dose-card my-2">
+      <div class="dose-card-title py-2">How can I make it ? <%= link_to "(Add a dose)", new_cocktail_dose_path(params[:id]) %></div>
+      <div class="dose-card-body">
+        <% @cocktail.doses.each do |dose| %>
+          <div class="dose-card-list">
+            <div class="card-text">
+              <span class="font-italic"><%= dose.description %></span> - <%= dose.ingredient.name %>
+            </div>
+            <div class="card-element">
+            <%= link_to dose_path, method: :delete do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+      <div class="card my-2">
+        <div class="card-body">
+          <%= link_to "Add a dose", new_cocktail_dose_path(params[:id]) %>
+          <% @cocktail.doses.each do |dose| %>
+            <div class="card-text">
+              <%= dose.description %>
+            </div>
+            <div class="card-text">
+              <%= dose.ingredient.name %>
+            </div>
+            <%= link_to dose_path, method: :delete do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

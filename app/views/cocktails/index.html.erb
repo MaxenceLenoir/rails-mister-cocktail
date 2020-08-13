@@ -1,0 +1,14 @@
+<h1 class="mt-2 text-center">Cocktails</h1>
+
+<div class="my-grid">
+  <% @cocktails.each do |cocktail| %>
+    <div class="cocktail-card grid-col my-2" style="background: linear-gradient(217deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5) 70.71%), url('https://source.unsplash.com/featured/?<%= cocktail.name %>?cocktail');background-position: center;  background-size: cover;">
+      <div class="card-body">
+        <h5 class="card-title"> <%= cocktail.name %></h5>
+        <div class="card-link">
+          <%= link_to "See details", cocktail_path(cocktail)%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

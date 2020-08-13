@@ -1,0 +1,34 @@
+.cocktail-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 5px 5px 5px rgba(175, 169, 169, 0.486);
+  height: 150px;
+}
+
+.dose-card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 5px rgba(175, 169, 169, 0.486);
+  background-color: white;
+  border: 1px solid rgba(128, 128, 128, 0.103);
+}
+
+.dose-card-title {
+  text-align: center;
+  background-color: rgba(255, 255, 0, 0.103);
+}
+
+.dose-card-body {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 5px rgba(175, 169, 169, 0.486);
+  padding: 15px;
+}
+
+.dose-card-list {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
