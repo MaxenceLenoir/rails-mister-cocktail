@@ -6,8 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Cleaning database..."
+Dose.destroy_all
 Ingredient.destroy_all
 Cocktail.destroy_all
+Review.destroy_all
 
 puts "Creating Ingredients and Cocktails..."
 
