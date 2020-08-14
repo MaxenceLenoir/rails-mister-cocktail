@@ -7,6 +7,12 @@
   height: 150px;
 }
 
+.cocktail-card-title {
+  text-align: center;
+  font-family: Lobster;
+  font-size: 32px;
+}
+
 .dose-card {
   display: flex;
   flex-direction: column;
@@ -18,6 +24,7 @@
 .dose-card-title {
   text-align: center;
   background-color: rgba(255, 255, 0, 0.103);
+  font-family: Lemonada;
 }
 
 .dose-card-body {

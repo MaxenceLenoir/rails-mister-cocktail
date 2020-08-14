@@ -1,0 +1,20 @@
+.btn-home {
+  text-decoration: none;
+  color: #f6aa1c;
+  background-color: #bc3908;
+  border: 2px solid #f6aa1c;
+  padding: 10px 25px;
+  border-radius: 40px;
+  font-family: raleway, sans-serif;
+  font-weight: bold;
+  opacity: 1;
+}
+
+.btn-home:hover {
+  text-decoration: none;
+  opacity: 0.7;
+  background-color: #f6aa1c;
+  border: 2px solid #220901;
+  color: #220901;
+  transition: color 1s ease;
+}

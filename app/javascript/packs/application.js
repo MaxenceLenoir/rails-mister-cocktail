@@ -10,8 +10,10 @@ require("channels")
 
 import 'bootstrap';
 import { dynamicRating } from "../plugins/starsInReviewForm";
+import { loadDynamicBannerText } from "../plugins/banner";
 
 document.addEventListener('turbolinks:load', () => {
+  loadDynamicBannerText();
   dynamicRating();
 });
 

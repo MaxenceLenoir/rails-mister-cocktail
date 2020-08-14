@@ -1,14 +1,18 @@
-<h1 class="mt-2 text-center">Cocktails</h1>
+<div class="container">
+  <div class="mt-2 text-center cocktail-title">Cocktails</div>
 
-<div class="my-grid">
-  <% @cocktails.each do |cocktail| %>
-    <div class="cocktail-card grid-col my-2" style="background: linear-gradient(217deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5) 70.71%), url('https://source.unsplash.com/featured/?<%= cocktail.name %>?cocktail');background-position: center;  background-size: cover;">
-      <div class="card-body">
-        <h5 class="card-title"> <%= cocktail.name %></h5>
-        <div class="card-link">
-          <%= link_to "See details", cocktail_path(cocktail)%>
+  <div class="my-grid">
+    <% @cocktails.each do |cocktail| %>
+      <div class="cocktail-card grid-col my-2" style="background: linear-gradient(217deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5) 70.71%), url('https://source.unsplash.com/featured/?<%= cocktail.name %>?cocktail');background-position: center;  background-size: cover;">
+        <div class="card-body">
+          <h5 class="cocktail-card-title"> 
+            <%= cocktail.name %>
+            <%= link_to cocktail_path(cocktail) do %>
+              <i class="far fa-eye text-success"></i>
+            <% end %>
+          </h5>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

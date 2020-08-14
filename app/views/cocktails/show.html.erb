@@ -1,59 +1,62 @@
-<h1 class="text-center my-2"><%= @cocktail.name %></h1>
-<div class="row">
-  <div class="col-md-6">
-    <div class="dose-card my-2">
-      <div class="dose-card-title py-2">How can I make it ?</div>
-      <div class="dose-card-body">
-        <% @cocktail.doses.each do |dose| %>
-          <div class="dose-card-list">
-            <div class="card-text">
-              <span class="font-italic"><%= dose.description %></span> - <%= dose.ingredient.name %>
+<div class="container">
+  <div class="cocktail-title text-center my-2"><%= @cocktail.name %></div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="dose-card my-2">
+        <div class="dose-card-title py-2">How can I make it ?</div>
+        <div class="dose-card-body">
+          <% @cocktail.doses.each do |dose| %>
+            <div class="dose-card-list">
+              <div class="card-text">
+                <span class="font-italic"><%= dose.description %></span> - <%= dose.ingredient.name %>
+              </div>
+              <div class="card-element">
+              <%= link_to dose_path, method: :delete do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+              </div>
             </div>
-            <div class="card-element">
-            <%= link_to dose_path, method: :delete do %>
-              <i class="far fa-trash-alt"></i>
-            <% end %>
-            </div>
+          <% end %>
+          <div class="card mt-2 p-2">
+            <%= render "doses/form", dose: [@cocktail, @dose] %>
           </div>
-        <% end %>
-        <div class="card mt-2 p-2">
-          <%= render "doses/form", dose: [@cocktail, @dose] %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class= "card-body">
+      <%= render "reviews/form", review: [@cocktail, @review] %>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Reviews</h5>
+          <% if @cocktail.reviews.empty? %>
+            There is no reviews for this cocktail
+          <% else %>
+            <% @cocktail.reviews.each do |review| %>
+              <div class="card my-1 border-warning">
+                <div class="card-body text-warning">
+                  <p class="card-text font-italic">
+                    <%= review.content %>
+                  </p>
+                  <p class="card-text">
+                    Rating : <% review.rating.times do %>
+                      <i class="fas fa-star text-warning"></i>
+                    <% end %>
+                    <% unless (5 - review.rating == 0) %>
+                      <% (5 - review.rating).times do %>
+                        <i class="far fa-star text-warning"></i>
+                      <% end %>
+                    <% end %>
+                  </p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-6">
-    <div class= "card-body">
-     <%= render "reviews/form", review: [@cocktail, @review] %>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Reviews</h5>
-        <% if @cocktail.reviews.empty? %>
-          There is no reviews for this cocktail
-        <% else %>
-          <% @cocktail.reviews.each do |review| %>
-            <div class="card my-1 border-warning">
-              <div class="card-body text-warning">
-                <p class="card-text font-italic">
-                  <%= review.content %>
-                </p>
-                <p class="card-text">
-                  Rating : <% review.rating.times do %>
-                    <i class="fas fa-star text-warning"></i>
-                  <% end %>
-                  <% unless (5 - review.rating == 0) %>
-                    <% (5 - review.rating).times do %>
-                      <i class="far fa-star text-warning"></i>
-                    <% end %>
-                  <% end %>
-                </p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+</div>
 
 

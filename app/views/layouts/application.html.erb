@@ -12,8 +12,9 @@
   </head>
 
   <body>
+  <% unless params[:action] == "home" %>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-      <%= link_to "#", class: "navbar-brand" do %>
+      <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag "Logo-cocktail.png" %>
         <% end %>
 
@@ -40,8 +41,7 @@
         </ul>
       </div>
     </div>
-    <div class="container">
-      <%= yield %>
-    </div>
+    <% end %>
+    <%= yield %>
   </body>
 </html>
