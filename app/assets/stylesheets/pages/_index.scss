@@ -1,2 +1,24 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.far.fa-eye:hover {
+  opacity: 0.5;
+}
+
+.far.fa-eye{
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 24px;
+}
+
+.far.fa-trash:hover {
+  opacity: 0.5;
+}
+
+.far.fa-trash-alt.text-secondary {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  font-size: 24px;
+}

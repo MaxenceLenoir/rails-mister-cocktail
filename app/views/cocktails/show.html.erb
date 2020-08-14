@@ -1,5 +1,9 @@
 <div class="container">
-  <div class="cocktail-title text-center my-2"><%= @cocktail.name %></div>
+  <% unless @cocktail.photo.attachment.nil? %>
+    <div class="cocktail-title text-center my-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @cocktail.photo.key %>');background-position: center;  background-size: cover;"><%= @cocktail.name %></div>
+  <% else %>
+    <div class="cocktail-title text-center my-2"><%= @cocktail.name %></div>
+  <% end %>
   <div class="row">
     <div class="col-md-6">
       <div class="dose-card my-2">
@@ -24,36 +28,35 @@
       </div>
     </div>
     <div class="col-md-6">
+    <div class="review-title">Leave a review</div>
       <div class= "card-body">
       <%= render "reviews/form", review: [@cocktail, @review] %>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Reviews</h5>
-          <% if @cocktail.reviews.empty? %>
-            There is no reviews for this cocktail
-          <% else %>
-            <% @cocktail.reviews.each do |review| %>
-              <div class="card my-1 border-warning">
-                <div class="card-body text-warning">
-                  <p class="card-text font-italic">
-                    <%= review.content %>
-                  </p>
-                  <p class="card-text">
-                    Rating : <% review.rating.times do %>
-                      <i class="fas fa-star text-warning"></i>
+      <div class="dose-card my-2">
+        <h5 class="dose-card-title">Reviews</h5>
+        <% if @cocktail.reviews.empty? %>
+          There is no reviews for this cocktail
+        <% else %>
+          <% @cocktail.reviews.each do |review| %>
+            <div class="card my-1 border-warning">
+              <div class="card-body text-warning">
+                <p class="card-text font-italic">
+                  <%= review.content %>
+                </p>
+                <p class="card-text">
+                  Rating : <% review.rating.times do %>
+                    <i class="fas fa-star text-warning"></i>
+                  <% end %>
+                  <% unless (5 - review.rating == 0) %>
+                    <% (5 - review.rating).times do %>
+                      <i class="far fa-star text-warning"></i>
                     <% end %>
-                    <% unless (5 - review.rating == 0) %>
-                      <% (5 - review.rating).times do %>
-                        <i class="far fa-star text-warning"></i>
-                      <% end %>
-                    <% end %>
-                  </p>
-                </div>
+                  <% end %>
+                </p>
               </div>
-            <% end %>
+            </div>
           <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
