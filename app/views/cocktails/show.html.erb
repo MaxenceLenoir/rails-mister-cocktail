@@ -22,7 +22,14 @@
             </div>
           <% end %>
           <div class="card mt-2 p-2">
-            <%= render "doses/form", dose: [@cocktail, @dose] %>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Change the recipe
+            </button>
+            <div class="collapse" id="collapseExample">
+              <div class="mt-4">
+                <%= render "doses/form", dose: [@cocktail, @dose] %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -44,7 +51,8 @@
                   <%= review.content %>
                 </p>
                 <p class="card-text">
-                  Rating : <% review.rating.times do %>
+                  Rating : 
+                  <% review.rating.times do %>
                     <i class="fas fa-star text-warning"></i>
                   <% end %>
                   <% unless (5 - review.rating == 0) %>

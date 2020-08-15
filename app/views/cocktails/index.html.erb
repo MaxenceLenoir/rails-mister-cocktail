@@ -7,12 +7,24 @@
         <%= link_to cocktail_path(cocktail), class: "without-decoration" do %>
           <div class="cocktail-card my-2"  style="background: linear-gradient(217deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5) 70.71%), url('https://source.unsplash.com/featured/?<%= cocktail.name %>?cocktail');background-position: center;  background-size: cover;">
             <div class="card-body">        
-            <% unless cocktail.photo.attachment.nil? %>
-              <div class="cocktail-card-avatar" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo.key %>')"></div>
-            <% end %>
-            <h5 class="cocktail-card-title"> 
-              <%= cocktail.name %>
-            </h5>
+              <% unless cocktail.photo.attachment.nil? %>
+                <div class="cocktail-card-avatar" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo.key %>')"></div>
+              <% end %>
+              <h5 class="cocktail-card-title"> 
+                <%= cocktail.name %> 
+              </h5>
+              <div class="card-text text-center">
+                <% unless cocktail.reviews.average(:rating).nil? %>
+                  <% cocktail.reviews.average(:rating).round.times do %>
+                    <i class="fas fa-star text-warning"></i>
+                  <% end %>
+                  <% unless (5 - cocktail.reviews.average(:rating).round == 0) %>
+                    <% (5 - cocktail.reviews.average(:rating).round).times do %>
+                      <i class="far fa-star text-warning"></i>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
