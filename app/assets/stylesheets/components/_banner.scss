@@ -1,5 +1,6 @@
 .banner {
   height: 100vh;
+  width: 100vw;
   background-image: asset-url("banner.jpg");
   background-position: center;
   background-size: cover;
@@ -21,4 +22,20 @@
   font-size: 48px;
   font-family: Lobster;
   color: $light-gray;
+}
+
+.typed-cursor {
+  visibility: hidden;
+}
+
+@media (max-width: 520px) {
+  .banner-title {
+    font-size: 48px;
+  }
+  .banner-subtitle {
+    font-size: 48px;
+  }
+  .banner {
+    padding: 50px;
+  }
 }
